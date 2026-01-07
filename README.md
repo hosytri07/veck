@@ -1,6 +1,21 @@
 (vl-load-com)
 
 ;; =========================================================
+;; 1. TỰ ĐỘNG LOAD BLOCK TỪ FILE MẪU
+;; Thay đổi đường dẫn file dưới đây cho đúng với máy của bạn
+;; =========================================================
+(defun veck-load-blocks-from-file "F:/Thu vien/1. BANG MAU KHAO SAT 1.500 (2026).dwg"
+  (if (findfile path)
+    (progn
+      (princ (strcat "\nĐang nạp Block từ: " path "..."))
+      (command "_.INSERT" (strcat path "=*") nil)
+      (princ " Hoàn tất.")
+    )
+    (princ (strcat "\nKhông tìm thấy file: " path))
+  )
+)
+
+;; =========================================================
 ;; VECK – VE CAU KIEN THEO POLYLINE
 ;; =========================================================
 
