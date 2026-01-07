@@ -1,19 +1,23 @@
 (vl-load-com)
 
 ;; =========================================================
-;; 1. TỰ ĐỘNG LOAD BLOCK TỪ FILE MẪU
-;; Thay đổi đường dẫn file dưới đây cho đúng với máy của bạn
+;; TỰ ĐỘNG LOAD BLOCK TỪ FILE THƯ VIỆN
 ;; =========================================================
-(defun veck-load-blocks-from-file "F:/Thu vien/1. BANG MAU KHAO SAT 1.500 (2026).dwg"
+(defun veck-load-blocks-auto (/ path)
+  (setq path "F:\\Thu vien\\1. BANG MAU KHAO SAT 1.500 (2026).dwg")
   (if (findfile path)
     (progn
-      (princ (strcat "\nĐang nạp Block từ: " path "..."))
+      (princ (strcat "\nĐang nạp thư viện từ: " path "..."))
+      ;; Sử dụng lệnh INSERT với tiền tố * để nạp toàn bộ Block định nghĩa
       (command "_.INSERT" (strcat path "=*") nil)
       (princ " Hoàn tất.")
     )
-    (princ (strcat "\nKhông tìm thấy file: " path))
+    (princ (strcat "\nCảnh báo: Không tìm thấy file tại " path))
   )
 )
+
+;; Chạy hàm nạp block ngay khi load file Lisp
+(veck-load-blocks-auto)
 
 ;; =========================================================
 ;; VECK – VE CAU KIEN THEO POLYLINE
